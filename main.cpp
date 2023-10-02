@@ -21,7 +21,7 @@ int main() {
 	std::cout << Min(x_int, y_int) << std::endl;
 	std::cout << Min(x_float, y_float) << std::endl;
 	std::cout << Min(x_double, y_double) << std::endl;
-	std::cout << &(Min(x_char, y_char)) << std::endl;
+	std::wcout << &(Min(x_char, y_char)) << std::endl;
 
 	return 0;
 }
