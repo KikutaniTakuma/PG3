@@ -25,10 +25,10 @@ void CallBack(bool isCorrect) {
 	}
 
 	if (isCorrect) {
-		std::cout << "正解!!!" << std::endl;
+		std::wcout << "正解!!!" << std::endl;
 	}
 	else {
-		std::cout << "不正解" << std::endl;
+		std::wcout << "不正解" << std::endl;
 	}
 }
 
@@ -37,7 +37,7 @@ int main() {
 	auto func = Dice;
 	int32_t input;
 
-	std::cout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
+	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
 
 	std::cin >> input;
 
