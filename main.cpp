@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 
 int32_t OtinginKudasaiFunction(int32_t num, int32_t recursive) {
