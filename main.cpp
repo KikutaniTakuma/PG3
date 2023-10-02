@@ -1,12 +1,15 @@
 ﻿#include <iostream>
+#include <string>
 
 template<class T>
-T Min(T x, T y) {
+const T& Min(T x, T y) {
 	return x < y ? x : y;
 }
 
-void Min(char x, char y) {
-	std::cout << "数字以外は代入できません" << std::endl;
+template<>
+const char& Min<char>(char x, char y) {
+	static std::string str = "数字以外は代入できません";
+	return str.at(0);
 }
 
 int main() {
@@ -18,7 +21,7 @@ int main() {
 	std::cout << Min(x_int, y_int) << std::endl;
 	std::cout << Min(x_float, y_float) << std::endl;
 	std::cout << Min(x_double, y_double) << std::endl;
-	Min(x_char, y_char);
+	std::cout << &(Min(x_char, y_char)) << std::endl;
 
 	return 0;
 }
