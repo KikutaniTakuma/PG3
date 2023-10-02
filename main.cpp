@@ -3,6 +3,7 @@
 #include <chrono>
 #include <thread>
 #include <algorithm>
+#include <functional>
 
 bool Dice(int32_t isEven) {
 	static std::random_device seed;
@@ -34,14 +35,30 @@ void CallBack(bool isCorrect) {
 
 
 int main() {
-	auto func = Dice;
+	std::function<void(bool)> answer = [](bool isCorrect) {
+		std::cout << std::endl;
+		int32_t count = 3;
+		while (count > 0) {
+			std::cout << count << std::endl;
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			count--;
+		}
+
+		if (isCorrect) {
+			std::cout << "正解!!!" << std::endl;
+		}
+		else {
+			std::cout << "不正解" << std::endl;
+		}
+	};
+
 	int32_t input;
 
 	std::cout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
 
 	std::cin >> input;
 
-	CallBack(func(input));
+	answer(Dice(input));
 
 	return 0;
 }
