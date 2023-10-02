@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 template<class T>
 T Min(T x, T y) {
@@ -6,7 +6,7 @@ T Min(T x, T y) {
 }
 
 void Min(char x, char y) {
-	std::cout << "”ŽšˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ" << std::endl;
+	std::cout << "æ•°å­—ä»¥å¤–ã¯ä»£å…¥ã§ãã¾ã›ã‚“" << std::endl;
 }
 
 int main() {
