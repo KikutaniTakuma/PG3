@@ -15,7 +15,7 @@ bool Dice(int32_t isEven) {
 	return dist(rnd) % 2 == isEven;
 }
 
-void CallBack(bool isCorrect) {
+void CallBack(bool (*func)(int32_t), int32_t isEven) {
 	std::cout << std::endl;
 	int32_t count = 3;
 	while (count > 0) {
@@ -24,7 +24,7 @@ void CallBack(bool isCorrect) {
 		count--;
 	}
 
-	if (isCorrect) {
+	if (func(isEven)) {
 		std::wcout << "正解!!!" << std::endl;
 	}
 	else {
@@ -34,14 +34,13 @@ void CallBack(bool isCorrect) {
 
 
 int main() {
-	auto func = Dice;
 	int32_t input;
 
 	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
 
 	std::cin >> input;
 
-	CallBack(func(input));
+	CallBack(Dice,input);
 
 	return 0;
 }
