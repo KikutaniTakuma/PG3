@@ -1,13 +1,13 @@
 ﻿#include <iostream>
 #include <string>
 
-template<class T>
-const T& Min(T x, T y) {
+template<typename T>
+const T& Min(const T& x, const T& y) {
 	return x < y ? x : y;
 }
 
 template<>
-const char& Min<char>(char x, char y) {
+const char& Min<char>(const char& x, const char& y) {
 	static std::string str = "数字以外は代入できません";
 	return str.at(0);
 }
