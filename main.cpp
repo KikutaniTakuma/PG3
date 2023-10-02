@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <random>
 #include <chrono>
 #include <thread>
@@ -25,10 +25,10 @@ void CallBack(bool isCorrect) {
 	}
 
 	if (isCorrect) {
-		std::cout << "³‰ð!!!" << std::endl;
+		std::cout << "æ­£è§£!!!" << std::endl;
 	}
 	else {
-		std::cout << "•s³‰ð" << std::endl;
+		std::cout << "ä¸æ­£è§£" << std::endl;
 	}
 }
 
@@ -37,7 +37,7 @@ int main() {
 	auto func = Dice;
 	int32_t input;
 
-	std::cout << "‹ô”‚Ìê‡‚Í0‚ðAŠï”‚Ìê‡‚Í1‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << std::endl;
+	std::cout << "å¶æ•°ã®å ´åˆã¯0ã‚’ã€å¥‡æ•°ã®å ´åˆã¯1ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„" << std::endl;
 
 	std::cin >> input;
 
