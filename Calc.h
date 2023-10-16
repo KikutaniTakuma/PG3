@@ -13,6 +13,6 @@ public:
 
 public:
 	T1 Min(T1 num1, T2 num2) const {
-		return	static_cast<T1>(num1) < static_cast<T1>(num2) ? num1 : num2;
+		return	static_cast<T1>(num1) < static_cast<T1>(num2) ? static_cast<T1>(num1) : static_cast<T1>(num2);
 	}
 };
