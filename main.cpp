@@ -4,32 +4,49 @@
 #include <thread>
 #include <algorithm>
 
-bool Dice(int32_t isEven) {
+int32_t Dice() {
 	static std::random_device seed;
 	static std::mt19937_64 rnd(seed());
 
 	std::uniform_int_distribution<> dist(1, 6);
 
-	isEven = std::clamp(isEven, 0, 1);
-
-	return dist(rnd) % 2 == isEven;
+	return dist(rnd);
 }
 
-void SetTimeOut(bool (*func)(int32_t), int32_t second) {
+void SetTimeOut(int32_t(*func)(void), int32_t second) {
+	// diceの目を入力
 	std::cout << std::endl;
+	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
+	int32_t isEven = 0;
+
+	std::cin >> isEven;
+
+	std::cout << std::endl;
+	// 秒数待つ
 	int32_t count = second;
 	while (count > 0) {
 		std::cout << count << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 		count--;
 	}
+	std::cout << std::endl;
 
-	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
-	int32_t isEven = 0;
 
-	std::cin >> isEven;
+	isEven = std::clamp(isEven, 0, 1);
 
-	if (func(isEven)) {
+	int32_t dice = func();
+
+	bool answer = (dice % 2 == isEven);
+
+	if (isEven == 0) {
+		std::wcout << "入力 : " << "偶数" << "(" << isEven << ")" << std::endl;
+	}
+	else {
+		std::wcout << "入力 : " << "奇数" << "(" << isEven << ")" << std::endl;
+	}
+	std::wcout << "サイコロ : " << dice << std::endl;
+
+	if (answer) {
 		std::wcout << "正解!!!" << std::endl;
 	}
 	else {
