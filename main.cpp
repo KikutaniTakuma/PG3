@@ -15,14 +15,19 @@ bool Dice(int32_t isEven) {
 	return dist(rnd) % 2 == isEven;
 }
 
-void CallBack(bool (*func)(int32_t), int32_t isEven) {
+void SetTimeOut(bool (*func)(int32_t), int32_t second) {
 	std::cout << std::endl;
-	int32_t count = 3;
+	int32_t count = second;
 	while (count > 0) {
 		std::cout << count << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 		count--;
 	}
+
+	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
+	int32_t isEven = 0;
+
+	std::cin >> isEven;
 
 	if (func(isEven)) {
 		std::wcout << "正解!!!" << std::endl;
@@ -34,13 +39,13 @@ void CallBack(bool (*func)(int32_t), int32_t isEven) {
 
 
 int main() {
-	int32_t input;
+	int32_t second;
 
-	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
+	std::wcout << "待つ秒数を入力してください" << std::endl;
 
-	std::cin >> input;
+	std::cin >> second;
 
-	CallBack(Dice,input);
+	SetTimeOut(Dice,second);
 
 	return 0;
 }
