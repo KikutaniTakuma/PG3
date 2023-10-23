@@ -2,5 +2,36 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Paper\Paper.cpp">
+      <Filter>Paper</Filter>
+    </ClCompile>
+    <ClCompile Include="Tissue\Tissue.cpp">
+      <Filter>Tissue</Filter>
+    </ClCompile>
+    <ClCompile Include="Toilet\Toilet.cpp">
+      <Filter>Toilet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Paper\Paper.h">
+      <Filter>Paper</Filter>
+    </ClInclude>
+    <ClInclude Include="Tissue\Tissue.h">
+      <Filter>Tissue</Filter>
+    </ClInclude>
+    <ClInclude Include="Toilet\Toilet.h">
+      <Filter>Toilet</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Paper">
+      <UniqueIdentifier>{87bf9cbe-e837-427f-a606-c479a4f93925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tissue">
+      <UniqueIdentifier>{644c6e4f-c0c0-45ec-9b90-f28edbd05777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Toilet">
+      <UniqueIdentifier>{ecaa07e5-bbd7-4d1e-97cb-28be7486343f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
