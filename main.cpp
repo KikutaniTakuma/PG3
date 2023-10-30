@@ -13,14 +13,7 @@ int32_t Dice() {
 	return dist(rnd);
 }
 
-void SetTimeOut(int32_t(*func)(void), int32_t second) {
-	// diceの目を入力
-	std::cout << std::endl;
-	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
-	int32_t isEven = 0;
-
-	std::cin >> isEven;
-
+void SetTimeOut(int32_t(*func)(void), int32_t isEven, int32_t second) {
 	std::cout << std::endl;
 	// 秒数待つ
 	int32_t count = second;
@@ -62,7 +55,14 @@ int main() {
 
 	std::cin >> second;
 
-	SetTimeOut(Dice,second);
+	// 奇数偶数を入力
+	std::cout << std::endl;
+	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
+	int32_t isEven = 0;
+
+	std::cin >> isEven;
+
+	SetTimeOut(Dice, isEven, second);
 
 	return 0;
 }
