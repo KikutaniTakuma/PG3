@@ -2,12 +2,13 @@
 #include <iostream>
 
 Toilet::Toilet() {
-	behavior = "wipe ass";
+	behavior = "wipe";
+	object = "ass";
 	flush = "flush the toilet";
 }
 
 void Toilet::Clean() {
-	std::cout << behavior << std::endl;
+	std::cout << behavior << " " << object << std::endl;
 	this->Flush();
 }
 
