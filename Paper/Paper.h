@@ -17,4 +17,5 @@ public:
 
 protected:
 	std::string behavior;
+	std::string object;
 };
