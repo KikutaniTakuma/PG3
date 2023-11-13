@@ -5,15 +5,13 @@
 #include <algorithm>
 #include <functional>
 
-bool Dice(int32_t isEven) {
+int32_t Dice() {
 	static std::random_device seed;
 	static std::mt19937_64 rnd(seed());
 
 	std::uniform_int_distribution<> dist(1, 6);
 
-	isEven = std::clamp(isEven, 0, 1);
-
-	return dist(rnd) % 2 == isEven;
+	return dist(rnd);
 }
 
 
@@ -35,13 +33,17 @@ int main() {
 		}
 	};
 
-	int32_t input;
+	int32_t isEven;
 
 	std::wcout << "偶数の場合は0を、奇数の場合は1を入力してください" << std::endl;
 
-	std::cin >> input;
+	std::cin >> isEven;
 
-	answer(Dice(input));
+	isEven = std::clamp(isEven, 0, 1);
+
+	int32_t dice = Dice();
+
+	answer(dice % 2 == isEven);
 
 	return 0;
 }
