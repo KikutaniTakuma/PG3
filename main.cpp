@@ -43,7 +43,7 @@ int main() {
 
 	std::cout << std::endl;
 	
-	std::function<void(void)> diceRoll = [isEven, waitSecond]() {
+	std::function<void(void)> diceRoll = [isEven]() {
 		int32_t dice = Dice();
 		if (dice % 2 == isEven) {
 			std::wcout << "正解!!!" << std::endl;
