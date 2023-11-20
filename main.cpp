@@ -14,7 +14,7 @@ int32_t Dice() {
 	return dist(rnd);
 }
 
-void SetTimeOut(int32_t second, std::function<void(void)> diceRoll) {
+void SetTimeOut(std::function<void(void)> function, int32_t second) {
 	int32_t count = second;
 	while (count > 0) {
 		std::cout << count << std::endl;
@@ -22,7 +22,7 @@ void SetTimeOut(int32_t second, std::function<void(void)> diceRoll) {
 		count--;
 	}
 
-	diceRoll();
+	function();
 }
 
 
@@ -53,7 +53,7 @@ int main() {
 		}
 		};
 
-	SetTimeOut(waitSecond, diceRoll);
+	SetTimeOut(diceRoll, waitSecond);
 
 	return 0;
 }
