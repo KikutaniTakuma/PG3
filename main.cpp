@@ -14,13 +14,15 @@ int32_t Dice() {
 	return dist(rnd);
 }
 
-void SetTimeOut(int32_t second) {
+void SetTimeOut(int32_t second, std::function<void(void)> diceRoll) {
 	int32_t count = second;
 	while (count > 0) {
 		std::cout << count << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 		count--;
 	}
+
+	diceRoll();
 }
 
 
@@ -41,9 +43,7 @@ int main() {
 
 	std::cout << std::endl;
 	
-	std::function<void(void)> answer = [isEven, waitSecond]() {
-		SetTimeOut(waitSecond);
-
+	std::function<void(void)> diceRoll = [isEven, waitSecond]() {
 		int32_t dice = Dice();
 		if (dice % 2 == isEven) {
 			std::wcout << "正解!!!" << std::endl;
@@ -53,7 +53,7 @@ int main() {
 		}
 		};
 
-	answer();
+	SetTimeOut(waitSecond, diceRoll);
 
 	return 0;
 }
