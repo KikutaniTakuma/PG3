@@ -14,32 +14,33 @@ int32_t Dice() {
 	return dist(rnd);
 }
 
+void Answer(std::function<void(void)> timeOut, bool isCorrect) {
+	std::cout << std::endl;
+	timeOut();
+
+	if (isCorrect) {
+		std::wcout << "正解!!!" << std::endl;
+	}
+	else {
+		std::wcout << "不正解" << std::endl;
+	}
+}
+
 
 int main() {
-	std::function<void(int32_t)> setTimeOut = [](int32_t second) {
-		int32_t count = second;
+
+	std::wcout << "何秒待つか入力してください" << std::endl;
+	int32_t waitSecond = 0;
+	std::cin >> waitSecond;
+
+	std::function<void(void)> setTimeOut = [waitSecond]() {
+		int32_t count = waitSecond;
 		while (count > 0) {
 			std::cout << count << std::endl;
 			std::this_thread::sleep_for(std::chrono::seconds(1));
 			count--;
 		}
 		};
-
-	std::wcout << "何秒待つか入力してください" << std::endl;
-	int32_t waitSecond = 0;
-	std::cin >> waitSecond;
-
-	std::function<void(bool)> answer = [waitSecond, &setTimeOut](bool isCorrect) {
-		std::cout << std::endl;
-		setTimeOut(waitSecond);
-
-		if (isCorrect) {
-			std::wcout << "正解!!!" << std::endl;
-		}
-		else {
-			std::wcout << "不正解" << std::endl;
-		}
-	};
 
 	int32_t isEven;
 
@@ -51,7 +52,7 @@ int main() {
 
 	int32_t dice = Dice();
 
-	answer(dice % 2 == isEven);
+	Answer(setTimeOut, dice % 2 == isEven);
 
 	return 0;
 }
