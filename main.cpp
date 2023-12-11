@@ -4,7 +4,7 @@
 #include <vector>
 
 int main() {
-	// 1970年の駅
+	// 1970
 	std::list<const char*> station = {
 		"Tokyo",
 		"Yurakucho",
@@ -58,11 +58,11 @@ int main() {
 	std::cout << "1970" << std::endl;
 	drawList();
 
-	std::cout << std::endl << "1971" << std::endl;
+	std::cout << std::endl << "2019" << std::endl;
 	insertStation("Nippori", "Nishi-Nippori");
 	drawList();
 
-	std::cout << std::endl << "2020" << std::endl;
+	std::cout << std::endl << "2022" << std::endl;
 	insertStation("Shinagawa", "Takanawa Gateway");
 	drawList();
 
