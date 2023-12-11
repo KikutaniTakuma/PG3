@@ -1,7 +1,6 @@
 #include <iostream>
 #include <list>
 #include <algorithm>
-#include <vector>
 
 int main() {
 	// 1970
