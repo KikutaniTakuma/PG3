@@ -1,26 +1,28 @@
 #include <iostream>
-#include <chrono>
+#include <algorithm>
 #include <string>
+#include <algorithm>
+#include <mutex>
 
 int main() {
-	std::string str(100000, 'a' );
+	std::mutex mtx;
+	std::thread thread1{ [&mtx]() {
+		std::lock_guard<std::mutex> lock{mtx};
+		std::cout << "thread1" << std::endl;
+		} };
+	thread1.join();
 
-	auto startTime = std::chrono::steady_clock::now();
+	std::thread thread2{ [&mtx]() {
+		std::lock_guard<std::mutex> lock{mtx};
+		std::cout << "thread2" << std::endl;
+		} };
+	thread2.join();
 
-	std::string copyStr = str;
-
-	auto endTime = std::chrono::steady_clock::now();
-
-	std::cout << "copy : " << std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime) << std::endl;
-
-
-	startTime = std::chrono::steady_clock::now();
-
-	std::string moveStr = std::move(str);
-
-	endTime = std::chrono::steady_clock::now();
-
-	std::cout << "move : " << std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime) << std::endl;
+	std::thread thread3{ [&mtx]() {
+		std::lock_guard<std::mutex> lock{mtx};
+		std::cout << "thread3" << std::endl;
+		} };
+	thread3.join();
 
 	return 0;
 }
